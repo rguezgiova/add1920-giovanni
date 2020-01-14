@@ -3,32 +3,32 @@
 option = ARGV[0]
 filename = ARGV[1]
 
-def check(as)
-    status = `whereis #{as[0]} |grep bin |wc -l`.to_i
+def check(pack)
+    status = `whereis #{pack[0]} | grep bin | wc -l`.to_i
       if status == 0
-        puts "#{as[0]} ->  (U) Uninstalled."
+        puts "#{pack[0]} desinstalado."
       elsif status == 1
-        puts "#{as[0]} ->  (I) Installed."
+        puts "#{pack[0]} instalado."
       end
 end
 
-def install(as)
-  status = `whereis #{as[0]} |grep bin |wc -l`.to_i
-  action = "#{as[1]}".to_s
+def install(pack)
+  status = `whereis #{pack[0]} | grep bin | wc -l`.to_i
+  action = "#{pack[1]}".to_s
   if action == "install"
     if status == 0
-      `apt-get install -y #{as[0]}`
-      puts "#{as[0]} -> (I) Installed."
+      `apt-get install -y #{pack[0]}`
+      puts "#{pack[0]} instalado."
     elsif status == 1
-      puts "#{as[0]} -> El programa ya está instalado."
+      puts "#{pack[0]} El programa ya está instalado."
     end
 
   elsif action == "remove"
       if status == 1
-        `apt-get remove -y  #{as[0]}`
-        puts "#{as[0]} -> (U) Uninstalled."
+        `apt-get remove -y  #{pack[0]}`
+        puts "#{pack[0]} desinstalado."
       elsif status == 0
-        puts "#{as[0]} -> El programa no está instalado."
+        puts "#{pack[0]} El programa no está instalado."
       end
   end
 end
@@ -74,7 +74,7 @@ elsif option == "--run"
         install(as)
       end
     elsif user != 0
-      puts "Se necesitan permisos de usuario root para ejecutar el script"
+      puts "Se necesitan permisos de administrador para ejecutar el script"
       exit 1
     end
 end
