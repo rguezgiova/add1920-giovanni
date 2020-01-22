@@ -1,15 +1,3 @@
-# Servicio de comunicaciones con Telegram
-
-| ID  | Criterio |
-| --- | -------- |
-| 1.4 | Entrega  |
-| 2.4 | Entrega  |
-| 3.2 | Tareas programadas |
-
-## 1.4 Entrega
-[Script](files/bot25d) utilizado:
-
-```ruby
 #!/usr/bin/env ruby
 
 require 'telegram/bot'
@@ -41,43 +29,3 @@ Telegram::Bot::Client.run(token) do |bot|
     end
   end
 end
-```
-
-**URL del vídeo en YouTube:** https://youtu.be/MWAbXlgehjs
-
-## 2.4 Entrega
-[Fichero](files/bot25.service) de configuración para que se inicie el servicio cada vez que iniciamos el equipo:
-
-```bash
-[Unit]
-Description=Servicio Bot del alumno25.
-After=network.service
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/ruby /usr/local/bin/bot25d
-
-[Install]
-WantedBy=multi-user.target
-```
-
-Aquí paramos el servicio y vemos su estado.
-
-![Paramos el servicio](img/1.png)
-
-Lo volvemos a arrancar y volvemos a ver su estado.
-
-![Arrancamos el servicio](img/2.png)
-
-## 3.2 Tareas programadas
-Aquí vemos el fichero de configuración para que el script se ejecute cada 5 minutos.
-
-![Fichero configuración](img/3.png)
-
-Paramos el servicio.
-
-![Paramos el servicio](img/4.png)
-
-Pasados 5 minutos vemos que el servicio arrancó automáticamente.
-
-![Arranque automático](img/5.png)
