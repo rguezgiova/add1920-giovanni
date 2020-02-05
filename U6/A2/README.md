@@ -102,7 +102,7 @@ Por último aplicamos el estado.
 ### 5.1 Crear estado "users"
 Creamos el directorio **/srv/aslt//base/users** y dentro el fichero **init.sls**.
 
-![Fichero users](img/21.png)
+![Fichero users](img/19.png)
 
 Y aplicamos el estado.
 
